@@ -35,6 +35,7 @@
     "node-rdkafka": "3.0.1"
   },
   "devDependencies": {
+    "@fastify/pre-commit": "^2.1.0",
     "@types/node": "^20.12.8",
     "abstract-logging": "2.0.1",
     "fastify": "^4.26.2",
