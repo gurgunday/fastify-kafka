@@ -101,7 +101,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ${{ fromJson(inputs.node-versions) }}
+        node-version: 20
     services:
       zookeeper:
         image: 'confluentinc/cp-zookeeper:7.4.3'
