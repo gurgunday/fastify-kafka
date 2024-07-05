@@ -41,4 +41,7 @@ test('error event after connection', t => {
     payload: 'hello world!',
     key: 'testKey'
   })
+  t.after(() => {
+    producer.stop()
+  })
 })
