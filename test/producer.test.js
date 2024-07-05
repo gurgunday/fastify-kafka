@@ -16,9 +16,6 @@ test('unreachable brokers', t => {
   const producer = new Producer(options, log, (err) => {
     t.ok(err)
   }, {}, { timeout: 200 })
-  t.after(() => {
-    producer.stop()
-  })
 })
 
 test('error event before connection', t => {
@@ -38,7 +35,6 @@ test('error event after connection', t => {
   })
   producer.on('error', (e) => {
     t.ok(e)
-    producer.stop()
   })
   producer.push({
     topic: 'test',
