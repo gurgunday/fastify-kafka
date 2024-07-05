@@ -36,7 +36,9 @@ test('error event after connection', t => {
     t.error(err)
     producer.producer.emit('event.error', new Error('Test Error'))
   })
-  producer.on('error', t.ok)
+  producer.on('error', (e) => {
+    t.ok(e)
+  })
   producer.push({
     topic: 'test',
     payload: 'hello world!',
