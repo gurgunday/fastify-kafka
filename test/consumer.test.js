@@ -17,6 +17,9 @@ test('unreachable brokers', t => {
   const consumer = new Consumer(options, log, (err) => {
     t.ok(err)
   }, {}, { timeout: 200 })
+  consumer.on('ready', (e) => {
+    t.error(e)
+  })
 })
 
 test('error event before connection', t => {
