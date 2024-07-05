@@ -27,7 +27,7 @@ test('error event before connection', t => {
 })
 
 test('error event after connection', t => {
-  t.plan(2)
+  t.plan(3)
   const opts = { ...options, 'metadata.broker.list': '127.0.0.1:9092' }
   const producer = new Producer(opts, log, (err) => {
     t.error(err)
