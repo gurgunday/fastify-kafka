@@ -22,7 +22,9 @@ test('multiple topics', t => {
     .after(err => {
       t.error(err)
 
-      consumerFastify.kafka.consumer.on('error', t.fail)
+      consumerFastify.kafka.consumer.on('error', () => {
+        t.fail()
+      })
       consumerFastify.kafka.subscribe([topicName1, topicName2])
 
       consumerFastify.kafka.on(topicName1, (msg, commit) => {
@@ -45,7 +47,9 @@ test('multiple topics', t => {
     .after(err => {
       t.error(err)
 
-      producerFastify.kafka.producer.on('error', t.fail)
+      producerFastify.kafka.producer.on('error', () => {
+        t.fail()
+      })
       producerFastify.kafka.push({
         topic: topicName1,
         payload: 'topic1',
