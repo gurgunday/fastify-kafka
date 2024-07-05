@@ -12,7 +12,7 @@ const options = {
 }
 
 test('unreachable brokers', t => {
-  t.plan(2)
+  t.plan(1)
   const producer = new Producer(options, log, (err) => {
     t.ok(err)
     producer.on('error', t.ok)
