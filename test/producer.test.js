@@ -35,7 +35,6 @@ test('error event after connection', t => {
   })
   producer.on('error', (e) => {
     t.ok(e)
-    producer.stop()
   })
   producer.push({
     topic: 'test',
