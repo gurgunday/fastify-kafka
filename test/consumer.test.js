@@ -35,8 +35,8 @@ test('error event after connection', t => {
     t.error(err)
     consumer.consumer.emit('event.error', new Error('Test Error'))
   })
-  consumer.on('error', () => {
-    t.ok()
+  consumer.on('error', (s) => {
+    t.ok(s)
     consumer.stop()
   })
 })
@@ -48,8 +48,8 @@ test('empty message with data event', t => {
     t.error(err)
     t.throws(() => consumer.consumer.emit('data'))
   })
-  consumer.on('error', () => {
-    t.ok()
+  consumer.on('error', (s) => {
+    t.ok(s)
     consumer.stop()
   })
 })
