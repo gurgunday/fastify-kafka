@@ -35,13 +35,11 @@ test('error event after connection', t => {
   })
   producer.on('error', (e) => {
     t.ok(e)
+    producer.stop()
   })
   producer.push({
     topic: 'test',
     payload: 'hello world!',
     key: 'testKey'
-  })
-  t.after(() => {
-    producer.stop()
   })
 })
