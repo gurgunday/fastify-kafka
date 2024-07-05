@@ -17,9 +17,6 @@ test('multiple topics', t => {
   const producerFastify = Fastify()
   const consumerFastify = Fastify()
 
-  t.teardown(() => producerFastify.close())
-  t.teardown(() => consumerFastify.close())
-
   consumerFastify
     .register(fastifyKafka, { ...options, producer: undefined })
     .after(err => {
@@ -61,6 +58,8 @@ test('multiple topics', t => {
       })
 
       t.ok(true)
+      producerFastify.close()
+      consumerFastify.close()
     })
 
   producerFastify.ready(err => {
