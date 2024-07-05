@@ -13,11 +13,12 @@ const options = {
 }
 
 test('unreachable brokers', t => {
-  t.plan(2)
+  t.plan(3)
   const consumer = new Consumer(options, log, (err) => {
     t.ok(err)
+    consumer.on('error', t.ok)
+    consumer.on('ready', t.error)
   }, {}, { timeout: 200 })
-  consumer.on('ready', t.error)
   t.after(() => {
     consumer.stop()
   })

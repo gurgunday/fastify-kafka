@@ -19,7 +19,7 @@ test('unreachable brokers', t => {
     producer.push()
   }, {}, { timeout: 200 })
   t.after(() => {
-    consumer.stop()
+    producer.stop()
   })
 })
 
