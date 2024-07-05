@@ -69,8 +69,13 @@ test('multiple topics', t => {
 
     consumerFastify.ready(err => {
       t.error(err)
-      producerFastify.close()
-      consumerFastify.close()
     })
+  })
+
+  t.after(() => {
+    producerFastify.kafka.producer.stop()
+    consumerFastify.kafka.consumer.stop()
+    producerFastify.close()
+    consumerFastify.close()
   })
 })
