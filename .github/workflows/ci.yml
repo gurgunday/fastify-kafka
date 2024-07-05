@@ -11,15 +11,6 @@ on:
       - "*.md"
 
 jobs:
-  test:
-    permissions:
-      contents: write
-      pull-requests: write
-    uses: fastify/workflows/.github/workflows/plugins-ci-kafka.yml@v4.2.1
-    with:
-      license-check: true
-      lint: true
-
   test2:
     name: Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest

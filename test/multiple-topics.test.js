@@ -58,8 +58,6 @@ test('multiple topics', t => {
       })
 
       t.ok(true)
-      producerFastify.close()
-      consumerFastify.close()
     })
 
   producerFastify.ready(err => {
@@ -68,5 +66,10 @@ test('multiple topics', t => {
     consumerFastify.ready(err => {
       t.error(err)
     })
+  })
+
+  t.after(() => {
+    producerFastify.close()
+    consumerFastify.close()
   })
 })
